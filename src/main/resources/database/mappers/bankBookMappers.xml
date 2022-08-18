@@ -11,4 +11,17 @@
 	<insert id="setBankBook" parameterType="com.dh.kdh.bankbook.BankBookDTO">
 		INSERT INTO bankbook VALUES(#{bookNum}, #{bookName}, #{bookRate}, #{bookSale})
 	</insert>
+	
+	<select id="getDetail" parameterType="com.dh.kdh.bankbook.BankBookDTO" resultType="com.dh.kdh.bankbook.BankBookDTO">
+		SELECT * FROM bankbook WHERE booknum = #{bookNum}
+	</select>
+	
+	<update id="setUpdate" parameterType="com.dh.kdh.bankbook.BankBookDTO">
+		UPDATE bankbook SET bookname = #{bookName}, bookrate = #{bookRate}, booksale = #{bookSale} WHERE booknum = #{bookNum}
+	</update>
+	
+	<delete id="setDelete" parameterType="com.dh.kdh.bankbook.BankBookDTO">
+		DELETE FROM bankbook WHERE booknum = #{bookNum}
+	</delete>
+	
 </mapper> 

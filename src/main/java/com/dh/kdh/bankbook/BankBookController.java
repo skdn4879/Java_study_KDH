@@ -31,7 +31,50 @@ public class BankBookController {
 	public String add(BankBookDTO bankBookDTO) throws Exception {
 		int result = bankBookService.setBankBook(bankBookDTO);
 		
-		return "";
+		if(result == 1) {
+			System.out.println("통장 등록 완료");
+		}
+		
+		return "redirect:./list";
 	}
 	
+	@RequestMapping(value = "detail", method = RequestMethod.GET)
+	public ModelAndView detail(BankBookDTO bankBookDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("bookDetail", bankBookService.getDetail(bankBookDTO));
+		mv.setViewName("bankbook/detail");
+		return mv;
+	}
+	
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public ModelAndView update(Long bookNum) throws Exception {
+		BankBookDTO bankBookDTO = new BankBookDTO();
+		bankBookDTO.setBookNum(bookNum);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("bankBookDTO", bankBookService.getDetail(bankBookDTO));
+		mv.setViewName("bankbook/update");
+		return mv;
+	}
+	
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String update(BankBookDTO bankBookDTO) throws Exception {
+		int result = bankBookService.setUpdate(bankBookDTO);
+		
+		if(result == 1) {
+			System.out.println("통장 정보 수정 완료");
+		}
+		
+		return "redirect:./list";
+	}
+	
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String delete(BankBookDTO bankBookDTO) throws Exception {
+		int result = bankBookService.setDelete(bankBookDTO);
+		
+		if(result == 1) {
+			System.out.println("통장 삭제 완료");
+		}
+		
+		return "redirect:./list";
+	}
 }
