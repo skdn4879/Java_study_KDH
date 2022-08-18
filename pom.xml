@@ -32,10 +32,11 @@
 		    <version>${org.springframework-version}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc10 -->
 		<dependency>
-		    <groupId>com.oracle.ojdbc</groupId>
-		    <artifactId>ojdbc8</artifactId>
-		    <version>19.3.0.0</version>
+		    <groupId>com.oracle.database.jdbc</groupId>
+		    <artifactId>ojdbc10</artifactId>
+		    <version>19.14.0.0</version>
 		</dependency>
 		<!-- Spring -->
 		<dependency>
@@ -131,12 +132,20 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		
+		<!-- spring Test 추가 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework-version}</version>
+			<scope>test</scope>
+		</dependency>
 	
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.7</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>        
 	</dependencies>
